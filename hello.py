@@ -8,3 +8,6 @@ print(y)
 #%%
 print('hello')
 print(z)
+
+import json
+json = json.load
