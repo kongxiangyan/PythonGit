@@ -3,7 +3,7 @@
 
 # %%
 # 例子1
-# 爬取中国传媒大学百度贴吧帖子信息
+# 爬取中国传媒大学百度贴吧帖子信息嗯
 
 from pyecharts import Line
 import pandas as pd
