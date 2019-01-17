@@ -34,7 +34,8 @@ y = []
 # 设置样式
 style.use('fivethirtyeight')
 # 设置画布
-fig, ax = plt.subplots()
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
 # 设置图形显示位置
 plt.subplots_adjust(bottom=0.2)
 plt.xlabel('Time(s)')
@@ -48,10 +49,9 @@ class ButtonHandler:
         print("初始化制图数据长度为：%s" % len(data))
         self.lastcount = len(data)
 
-    # 线程函数，用来更新数据并重新绘制图形
-    def threadStart(self):
+    def redraw(self):
         while self.flag:
-            sleep(1)
+            sleep(2)
             _len = len(data)
             print("当前数据长度为：【 %s 】, 上次数据长度(lastcount)为：【 %s 】" % (_len, self.lastcount))
 
@@ -74,8 +74,13 @@ class ButtonHandler:
                 print("重置lastcount为：【 %s 】" % _len)
                 self.lastcount = _len
                 # 重新绘制图形
-                ax.clear()
-                ax.plot(x, y)
+                ax1.clear()
+                ax1.plot(x, y)
+
+    # 线程函数，用来更新数据并重新绘制图形
+    def threadStart(self):
+        # ani = animation.FuncAnimation(fig, self.redraw, interval=2000)
+        self.redraw()
 
     def Start(self, event):
         self.flag = True
@@ -126,7 +131,7 @@ def request(url):
         'user_count': json_obj['msg']['user_count'],
         'raw': json_str
     })
-    print('当前已存储数据【 %s 】条，详细情况如下：' % len(data))
+    print('当前已存储数据【 %s 】条' % len(data))
 
 
 def doit():
