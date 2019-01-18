@@ -1,4 +1,4 @@
-
+#coding:utf-8
 # 引入必要的包
 import requests
 import json
@@ -15,6 +15,13 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
 from matplotlib.widgets import Button
+from pyecharts import Line
+
+
+def drawEchartsLine(name, xs, ys):
+    line = Line("网易直播某直播间在线人数")
+    line.add(name, xs, ys)
+    line.render()
 
 # 定义目标Url的参数：
 # http://data.live.126.net/partake/usercount/198476.json?callback=liveUsercount
@@ -74,8 +81,10 @@ class ButtonHandler:
                 print("重置lastcount为：【 %s 】" % _len)
                 self.lastcount = _len
                 # 重新绘制图形
+                drawEchartsLine("太空", x, y)
                 ax1.clear()
                 ax1.plot(x, y)
+                plt.draw()
 
     # 线程函数，用来更新数据并重新绘制图形
     def threadStart(self):
