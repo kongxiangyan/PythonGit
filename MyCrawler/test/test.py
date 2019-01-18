@@ -39,19 +39,26 @@ plt.ylabel('time(s)')
 #plt.plot(x2, y2,'b',label='join')
 #plt.xticks(x1, group_labels, rotation=0)
 
-plt.plot(x3, y3,'r', label='broadcast')
-plt.plot(x4, y4,'b',label='join')
-plt.xticks(x3, group_labels, rotation=0)
-
-plt.legend(bbox_to_anchor=[0.3, 1])
+# plt.plot(x3, y3,'r', label='broadcast')
+# plt.plot(x4, y4,'b',label='join')
+# plt.xticks(x3, group_labels, rotation=0)
+plt.plot([[1,2,3],[2,3,4],[3,4,5],[5,100,50],[4,34,23]])
+for label in ax1.get_xticklabels():
+    label.set_visible(False)
+for label in ax1.get_xticklabels()[::(5%5)]:
+    label.set_visible(True)
+# plt.legend(bbox_to_anchor=[0.3, 1])
 plt.grid()
 plt.show()
+x = range(100)
+print(x[::2])
+print(x[::3])
+print(x[10:40:6])
 
-# import time
-# a = '2016-07-31 12:12:12'
+
+# 时间格式转换
+# time = data[i]['time']
 # _timestamp = time.mktime(time.strptime(a,"%Y-%m-%d %H:%M:%S"))
 # timeTuple = time.localtime(_timestamp)
 # otherTime = time.strftime("%H:%M:%S", timeTuple)
-# print(_timestamp)
-# print(otherTime)
 
