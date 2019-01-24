@@ -17,10 +17,12 @@ import WriteInXls
 # http://data.live.126.net/partake/usercount/198476.json?callback=liveUsercount
 # 200056, 95689
 param = {
-    'roomid': '95689',
+    'roomid': '200056',
     'callback': 'liveUsercount'
 }
 filename = "163live"
+
+param['roomid'] = input("请输入直播间的房间号：")
 
 # 拼接请求的目标url
 url = UrlHandler.spliceUrl('163live', param)
